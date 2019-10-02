@@ -7,6 +7,9 @@ Creates a new user.
 </br>
 GET `/api/users`
 Gets all users, required for repeated username validation.
+</br>
+GET `/api/users/:userId`
+Gets a user, required for POST message.
 
 **Posts**
 </br>
