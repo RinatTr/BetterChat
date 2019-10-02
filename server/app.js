@@ -4,7 +4,7 @@ const app = express();
 
 //Route imports
 const usersRouter = require('./routes/users');
-// const messagesRouter = require('./routes/messages');
+const messagesRouter = require('./routes/messages');
 
 //Middleware
 app.use(express.json());
@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 //Route usage
 app.get('/', (req,res) => {res.send('welcome to better-chat')})
 app.use('/api/users', usersRouter);
-// app.use('/api/messages', messagesRouter);
+app.use('/api/messages', messagesRouter);
 
 // error handler
 app.use((err, req, res, next) => {
