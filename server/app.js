@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 //Route imports
-// const usersRouter = require('./routes/users');
+const usersRouter = require('./routes/users');
 // const messagesRouter = require('./routes/messages');
 
 //Middleware
@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 //Route usage
 app.get('/', (req,res) => {res.send('welcome to better-chat')})
-// app.use('/api/users', usersRouter);
+app.use('/api/users', usersRouter);
 // app.use('/api/messages', messagesRouter);
 
 // error handler
