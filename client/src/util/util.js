@@ -13,5 +13,5 @@ export const getAllUsers = () => {
     return axios.get('/api/users')
 };
 export const createUser = (username) => {
-    return axios.post(`/api/users/${username}`)
+    return axios.post(`/api/users/${username}`) //returns new ID
 };
