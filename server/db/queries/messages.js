@@ -14,11 +14,11 @@ const getAllMessages = (req, res, next) => {
 }
 
 const createMessage = (req, res, next) => {
-  db.none("INSERT INTO messages(username) VALUES($1)", [username])
+  db.none("INSERT INTO messages(user_id, body) VALUES(${user_id}, ${body})", req.body)
     .then(() => {
       res.status(200).json({
-        status: "sucess",
-        message: "created user: "+username
+        status: "success",
+        message: "added a post"
       })
     })
     .catch(err => next(err))
