@@ -27,11 +27,12 @@ const getUser = (req, res, next) => {
 
 const createUser = (req, res, next) => {
   let username = req.params.username;
-  db.none("INSERT INTO users(username) VALUES($1)", [username])
-    .then(() => {
+  db.one("INSERT INTO users(username) VALUES($1) RETURNING users.id", [username])
+    .then((data) => {
       res.status(200).json({
         status: "sucess",
-        message: "created user: "+username
+        message: "created user: "+username,
+        data
       })
     })
     .catch(err => next(err))
