@@ -10,3 +10,4 @@ username: varchar unique not null
 ID: primary serial key
 user_id: int references Users
 body: varchar
+timestamp: timestamp
