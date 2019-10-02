@@ -21,3 +21,5 @@
 2. React state will be used to create a session by storing a new username each refresh when component mounts.
 3. Thread should display a limited amount of latest posts, depends on the view size.
 4. Can scroll up to view earlier posts, infinitely, up to very first post in the chat app.
+5. Username can be used as Unique ID for avatar.
+6. Usernames have to be unique.
