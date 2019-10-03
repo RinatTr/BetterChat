@@ -8,6 +8,7 @@ class Main extends Component {
         this.state = {
             msgs: [],
             username: "",
+            user_id: null,
             prompt: ""
         }
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,11 +26,23 @@ class Main extends Component {
     }
     async handleSubmit(e) {
         e.preventDefault();
+        let { prompt } = this.state;
         //if no username, set username. else, post message
         if (!this.state.username) {
-            Util.createUser(e.target.value);
+            let username = prompt;
+            let res = await Util.createUser(username);
+            let user_id = res.data.data.id;
+            this.setState({username, user_id, prompt:""})
         } else {
-            
+            let msg = { body: prompt,
+                        user_id: this.state.user_id };
+            try {
+                await Util.createMessage(msg);
+                let { data } = await Util.getAllMessages();
+                this.setState({msgs: data.messages, prompt:""});
+            } catch(e) {
+                console.log(e, "could not create or get messages from server")
+            }  
         }
     }
 
@@ -55,7 +68,8 @@ class Main extends Component {
                             name="prompt" 
                             onChange={this.handleChange} 
                             value={prompt} 
-                            placeholder={username ? "type message" : "enter username"}/>
+                            placeholder={username ? "type message" : "enter username"}
+                        />
                         <button type="submit">click</button>
                     </form>
                 </div>
