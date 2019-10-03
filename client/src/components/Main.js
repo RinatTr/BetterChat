@@ -51,7 +51,6 @@ class Main extends Component {
         return (
             <div className="main-container">
                 <div className="messages-container">
-                    Better Chat
                     <ul>
                         {msgs.map((msg, i) => {
                             return <Message 
