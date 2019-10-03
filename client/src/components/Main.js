@@ -23,7 +23,6 @@ class Main extends Component {
 
     render() {
         let { messages } = this.state; 
-        console.log(messages)
         return (
             <div className="main-container">
                 <div className="messages-container">
@@ -33,6 +32,7 @@ class Main extends Component {
                             key={i}
                             body={msg.body} 
                             username={msg.username}
+                            timestamp={msg.created_at}
                             />
                         }) 
                     }
