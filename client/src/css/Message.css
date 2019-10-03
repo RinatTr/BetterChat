@@ -1,0 +1,29 @@
+div.post-container {
+    display: flex;
+}
+
+div.body-container {
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    color: #291843;
+    font-weight: bold;
+}
+
+div.info-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+div.msg-container {
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 10px;
+    background-color: #F6F6F6;
+    border-radius: 10px;
+}
+
+div.msg-container p {
+    margin: 0px;
+}

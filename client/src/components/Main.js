@@ -52,15 +52,16 @@ class Main extends Component {
             <div className="main-container">
                 <div className="messages-container">
                     Better Chat
-                    {msgs.map((msg, i) => {
-                        return <Message 
-                            key={i}
-                            body={msg.body} 
-                            username={msg.username}
-                            timestamp={msg.created_at}
-                            />
-                        }) 
-                    }
+                    <ul>
+                        {msgs.map((msg, i) => {
+                            return <Message 
+                                key={i}
+                                body={msg.body} 
+                                username={msg.username}
+                                timestamp={msg.created_at}
+                                />
+                            })}
+                    </ul>
                 </div>
                 <div className="form-container">
                     <form onSubmit={this.handleSubmit}>
