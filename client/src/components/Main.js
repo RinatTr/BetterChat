@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Message from './Message.js';
 import * as Util from '../util/util.js';
+import '../css/Main.css';
 
 class Main extends Component {
     constructor() {
@@ -68,7 +69,7 @@ class Main extends Component {
                             name="prompt" 
                             onChange={this.handleChange} 
                             value={prompt} 
-                            placeholder={username ? "type message" : "enter username"}
+                            placeholder={username ? "what's happening?" : "Enter a username"}
                         />
                         <button type="submit">click</button>
                     </form>

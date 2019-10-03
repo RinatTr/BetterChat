@@ -5,6 +5,7 @@ div.post-container {
 
 div.avatar-container {
     margin-right: 12px;
+    min-width: 6vh;
 }
 div.avatar-container img {
     border-radius: 50%;

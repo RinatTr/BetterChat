@@ -1,0 +1,45 @@
+div.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+div.messages-container {
+  margin-left: 15px;
+}
+div.form-container {
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  border: none;
+  border-top: 1.3px solid #55D3B4;
+  padding-top: 2px;
+  background: white;
+}
+
+ul {
+  list-style-type: none;
+  margin-block-start: 0em;
+  margin-block-end: 5em;
+  padding-inline-start: 0px;
+  /* overflow: scroll; */
+
+}
+
+form {
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+}
+
+form input {
+  border: none;
+  padding: 15px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: calc(6px + 1vmin);
+}
+
+form input::placeholder {
+  color: #C2CCCC;
+}
+
