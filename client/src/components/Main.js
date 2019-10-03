@@ -34,8 +34,7 @@ class Main extends Component {
                             body={msg.body} 
                             username={msg.username}
                             />
-                        }
-                    ) 
+                        }) 
                     }
                 </div>
                 <div className="form-container">
