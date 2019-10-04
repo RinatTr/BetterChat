@@ -2,7 +2,8 @@ const { db } = require("./connect.js");
 
 const getAllMessages = (req, res, next) => {
   db.any(`SELECT messages.created_at, messages.body, users.username
-          FROM messages JOIN users ON messages.user_id = users.id`)
+          FROM messages JOIN users ON messages.user_id = users.id
+          ORDER BY messages.created_at DESC`)
     .then(data => {
       res.status(200).json({
         status: "success",
