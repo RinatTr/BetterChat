@@ -32,15 +32,29 @@ export async function updateUser(compRef, username) {
     try {
         let res = await createUser(username);
         let user_id = res.data.data.id;
-        compRef.setState({username, user_id, prompt:"", invalid_user: false})
+        compRef.setState({username, user_id, prompt:"", invalid_user: false, non_unique: false})
     } catch(e) {
         console.log(e, "could not update user")
+        if (isNonUnique(e)) compRef.setState({non_unique: true, invalid_user: false})
     }
 }
 
 // Validation
     // Username
-export const isValidUsername = (input) => {
+export const isNotLongUsername = (input) => {
     // 15 chars max 
     return input.length <= 15;
+}
+
+export const isNonUnique = (e) => {
+    // username must be unique. error code for SQL unique constraint validation
+    return (e.response.data.error.code === "23505")
+}
+
+export const invalidCaseStr = (long, non_unique) => {
+    if (long) {
+        return "username should be no longer than 15 characters";
+    } else {
+        return "username already exists";
+    }
 }

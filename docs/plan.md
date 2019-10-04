@@ -25,3 +25,7 @@
 6. Usernames have to be unique.
 7. Regarding requirement: "When the page is refreshed any currently logged in user should be logged out and they should be prompted to enter a username again.", assuming that all the rest of the users stay logged in. 
 8. Regarding requirement: "Every post needs to have date and time...", design spec displays "timeago", but not date, hence only time that has passed since the message was created is displayed (not the date). 
+
+## Challenges 
+Error handling at username validation. Max char error can be handled on front end, but UNIQUE username has to go through backend. 
+Studying testing to fullfil mandatory requirement.
