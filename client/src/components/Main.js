@@ -15,12 +15,7 @@ class Main extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     async componentDidMount() {
-        try {
-            let { data } = await Util.getAllMessages()
-            this.setState({msgs: data.messages});
-        } catch(e) {
-            console.log(e, "could not get messages from server")
-        }    
+        Util.updateMessages(this);  
     }
     handleChange = (e) => {
         this.setState({prompt: e.target.value})
@@ -31,19 +26,11 @@ class Main extends Component {
         //if no username, set username. else, post message
         if (!this.state.username) {
             let username = prompt;
-            let res = await Util.createUser(username);
-            let user_id = res.data.data.id;
-            this.setState({username, user_id, prompt:""})
+            Util.updateUser(this, username)
         } else {
             let msg = { body: prompt,
                         user_id: this.state.user_id };
-            try {
-                await Util.createMessage(msg);
-                let { data } = await Util.getAllMessages();
-                this.setState({msgs: data.messages, prompt:""});
-            } catch(e) {
-                console.log(e, "could not create or get messages from server")
-            }  
+            Util.updateMessages(this, msg);
         }
     }
 
