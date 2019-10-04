@@ -22,13 +22,15 @@ ul {
   margin-block-start: 0em;
   margin-block-end: 5em;
   padding-inline-start: 0px;
+  display: flex;
+  flex-direction: column-reverse;
   /* overflow: scroll; */
 
 }
 
 form {
   display: grid;
-  grid-template-columns: 9fr 1fr;
+  grid-template-columns: 15fr 1fr;
 }
 
 form input {
@@ -44,6 +46,12 @@ form input::placeholder {
 }
 
 button {
+  border: none;
+  background: none;
+}
 
+button i.material-icons {
+  font-size: calc(20px + 2vmin);
+  color: lightgrey;
 }
 
