@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Message from './Message.js';
 import * as Util from '../util/util.js';
+import send from '../assets/baseline_send_black_18dp.png';
+import account from '../assets/baseline_account_circle_black_18dp.png';
 import '../css/Main.css';
 
 class Main extends Component {
@@ -71,7 +73,7 @@ class Main extends Component {
                             value={prompt} 
                             placeholder={username ? "what's happening?" : "Enter a username"}
                         />
-                        <button type="submit">click</button>
+                        <button type="submit"><i class="material-icons">account_circle</i></button>
                     </form>
                 </div>
             </div>
