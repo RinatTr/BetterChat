@@ -24,8 +24,6 @@ ul {
   padding-inline-start: 0px;
   display: flex;
   flex-direction: column-reverse;
-  /* overflow: scroll; */
-
 }
 
 form {
