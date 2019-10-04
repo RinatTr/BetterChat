@@ -28,6 +28,7 @@ app.use((err, req, res, next) => {
   res.json({  message: err.message,
               error: err
               })
+  console.log("//ERROR:", req.method, req.url, err.message)
 });
 // app.use(express.static(path.join(__dirname, "client/build")))
 app.listen(process.env.PORT || 3100, () => {

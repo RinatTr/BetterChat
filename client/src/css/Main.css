@@ -11,10 +11,6 @@ div.form-container {
   width: 100%;
   position: fixed;
   bottom: 0px;
-  border: none;
-  border-top: 1.3px solid #55D3B4;
-  padding-top: 2px;
-  background: white;
 }
 
 ul {
@@ -29,6 +25,15 @@ ul {
 form {
   display: grid;
   grid-template-columns: 15fr 1fr;
+  border-top: 1.3px solid #55D3B4;
+  padding-top: 2px;
+  background: white;
+}
+
+span.invalid {
+  font-size: calc(5px + 1vmin);
+  color: #FB5817;
+  margin-left: 12px;
 }
 
 form input {

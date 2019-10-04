@@ -5,7 +5,7 @@ CREATE DATABASE better;
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
-  username VARCHAR UNIQUE NOT NULL
+  username VARCHAR(15) UNIQUE NOT NULL
 );
 
 CREATE TABLE messages (

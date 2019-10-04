@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-// API calls:
+// API calls
     // Messages
 export const getAllMessages = () => { 
     return axios.get('/api/messages') 
@@ -16,7 +16,8 @@ export const createUser = (username) => {
     return axios.post(`/api/users/${username}`) //returns new ID
 };
 
-// Update messages
+// Update Content
+    // Update messages
 export async function updateMessages(compRef, msg = null) {
     try {
         if (msg) await createMessage(msg); 
@@ -26,14 +27,20 @@ export async function updateMessages(compRef, msg = null) {
         console.log(e, "could not update messages")
     } 
 }
-
-// Create user
+    // Create user
 export async function updateUser(compRef, username) {
     try {
         let res = await createUser(username);
         let user_id = res.data.data.id;
-        compRef.setState({username, user_id, prompt:""})
+        compRef.setState({username, user_id, prompt:"", invalid_user: false})
     } catch(e) {
         console.log(e, "could not update user")
     }
+}
+
+// Validation
+    // Username
+export const isValidUsername = (input) => {
+    // 15 chars max 
+    return input.length <= 15;
 }

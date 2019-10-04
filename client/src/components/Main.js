@@ -10,7 +10,8 @@ class Main extends Component {
             msgs: [],
             username: "",
             user_id: null,
-            prompt: ""
+            prompt: "",
+            invalid_user: false
         }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -26,7 +27,12 @@ class Main extends Component {
         //if no username, set username. else, post message
         if (!this.state.username) {
             let username = prompt;
-            Util.updateUser(this, username)
+            if (Util.isValidUsername(username)) {
+                Util.updateUser(this, username);
+            } else {
+                this.setState({invalid_user: true})
+            }
+            
         } else {
             let msg = { body: prompt,
                         user_id: this.state.user_id };
@@ -35,7 +41,7 @@ class Main extends Component {
     }
 
     render() {
-        let { msgs, prompt, username } = this.state; 
+        let { msgs, prompt, username, invalid_user } = this.state; 
         return (
             <div className="main-container">
                 <div className="messages-container">
@@ -51,6 +57,7 @@ class Main extends Component {
                     </ul>
                 </div>
                 <div className="form-container">
+                    {invalid_user ? <span className="invalid">username should be no longer than 15 characters</span> : ""}
                     <form onSubmit={this.handleSubmit}>
                         <input 
                             name="prompt" 
