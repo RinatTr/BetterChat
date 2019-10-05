@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Message from './Message.js';
 import * as Util from '../util/util.js';
 import '../css/Main.css';
+import { w3cwebsocket as W3CWebSocket } from "websocket";
+const client = new W3CWebSocket('ws://localhost:8000');
 
 class Main extends Component {
     constructor(props) {
@@ -19,14 +21,29 @@ class Main extends Component {
     async componentDidMount() {
         Util.updateMessages(this);  
     }
+    componentWillMount() {
+        client.onopen = () => {
+            console.log('WebSocket Client Connected');
+        };
+        client.onmessage = (message) => {
+            setTimeout(function() { Util.updateMessages(this) }.bind(this), 1000)
+            //if username don't broadcast, if message, broadcast
+            // append to both msg and username emition a string at the beginning
+            if (typeof message.data === 'string') {
+                console.log("Received: '" + message.data + "'");
+            }
+        };
+    }
     handleChange = (e) => {
         this.setState({prompt: e.target.value})
     }
     async handleSubmit(e) {
         e.preventDefault();
         let { prompt } = this.state;
+       
         //if no username, set username. else, post message
         if (!this.state.username) {
+            client.send(prompt)
             let username = prompt;
             if (Util.isNotLongUsername(username)) {
                 Util.updateUser(this, username);
@@ -34,9 +51,10 @@ class Main extends Component {
                 this.setState({invalid_user: true})
             }            
         } else {
+            client.send(prompt)
             let msg = { body: prompt,
                         user_id: this.state.user_id };
-            Util.updateMessages(this, msg);
+            Util.updateMessages(this, msg); 
         }
     }
 

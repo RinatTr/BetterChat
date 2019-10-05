@@ -1,6 +1,44 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const http = require('http');
 const app = express();
+const webSocketsServerPort = 8000;
+
+// Spinning the http server and the websocket server.
+const server = http.createServer();
+server.listen(webSocketsServerPort, () => {
+  console.log('better-chat: listening to 8000');
+});
+
+// Websocket server
+const webSocketServer = require('websocket').server;
+const wsServer = new webSocketServer({
+  httpServer: server
+});
+const clients = {};
+
+// Generates unique ID for every new connection
+const getUniqueID = () => {
+  const s4 = () => Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+  return s4() + s4() + '-' + s4();
+};
+
+wsServer.on('request', function(request) {
+  let userID = getUniqueID();
+  console.log('connection made', request.origin)
+  const connection = request.accept(null, request.origin);
+  clients[userID] = connection;
+  connection.on('message', function(message) {
+    sendMessage(message.utf8Data)
+  })
+})
+
+const sendMessage = (json) => {
+  // We are sending the current data to all connected clients
+  Object.keys(clients).map((client) => {
+    clients[client].sendUTF(json);
+  });
+}
 
 //Route imports
 const usersRouter = require('./routes/users');
