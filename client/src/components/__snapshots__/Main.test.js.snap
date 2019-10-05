@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main snapshot test 1`] = `
+<div
+  className="main-container"
+>
+  <div
+    className="messages-container"
+  >
+    <ul />
+  </div>
+  <div
+    className="form-container"
+  >
+    
+    <form
+      onSubmit={[Function]}
+    >
+      <input
+        name="prompt"
+        onChange={[Function]}
+        placeholder="Enter a username"
+        value=""
+      />
+      <button
+        type="submit"
+      >
+        <i
+          className="material-icons"
+        >
+          account_circle
+        </i>
+      </button>
+    </form>
+  </div>
+</div>
+`;

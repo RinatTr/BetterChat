@@ -10,6 +10,7 @@ const PROXY = "http://localhost:3100";
 test('Main snapshot test', () => {
   const component = renderer.create(<Main />);
   const tree = component.toJSON();
+  console.log(tree.props)
   expect(tree).toMatchSnapshot();
 });
 

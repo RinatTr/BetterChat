@@ -4,8 +4,8 @@ import * as Util from '../util/util.js';
 import '../css/Main.css';
 
 class Main extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             msgs: [],
             username: "",
