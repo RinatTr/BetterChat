@@ -7,11 +7,11 @@ import axios from 'axios';
 // Jest does not use proxy for API calls
 const PROXY = "http://localhost:3100";
 
-// test('Main snapshot test', () => {
-//   const component = renderer.create(<Main />);
-//   const tree = component.toJSON();
-//   expect(tree).toMatchSnapshot();
-// });
+test('Main snapshot test', () => {
+  const component = renderer.create(<Main />);
+  const tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
 
 test('non-unique username request fails with expected error code', () => {
     const EXISTING_USERNAME = "wolverine";
