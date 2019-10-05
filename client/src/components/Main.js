@@ -19,9 +19,6 @@ class Main extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     async componentDidMount() {
-        Util.updateMessages(this);  
-    }
-    componentWillMount() {
         client.onopen = () => {
             console.log('WebSocket Client Connected');
         };
@@ -33,7 +30,9 @@ class Main extends Component {
                 console.log("Received: '" + message.data + "'");
             }
         };
+        Util.updateMessages(this);  
     }
+
     handleChange = (e) => {
         this.setState({prompt: e.target.value})
     }
