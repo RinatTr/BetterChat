@@ -17,11 +17,18 @@ const wsServer = new webSocketServer({
 });
 const clients = {};
 
-// Generates unique ID for every new connection
+// Generate unique ID for every new connection
 const getUniqueID = () => {
   const s4 = () => Math.floor((1 + Math.random()) * 0x10000).toString(16).slice(1);
   return s4() + s4() + '-' + s4();
 };
+
+const sendMessage = (json) => {
+  // send the current data to all connected clients
+  Object.keys(clients).map((client) => {
+    clients[client].sendUTF(json);
+  });
+}
 
 wsServer.on('request', function(request) {
   let userID = getUniqueID();
@@ -32,13 +39,6 @@ wsServer.on('request', function(request) {
     sendMessage(message.utf8Data)
   })
 })
-
-const sendMessage = (json) => {
-  // We are sending the current data to all connected clients
-  Object.keys(clients).map((client) => {
-    clients[client].sendUTF(json);
-  });
-}
 
 //Route imports
 const usersRouter = require('./routes/users');
@@ -68,7 +68,7 @@ app.use((err, req, res, next) => {
               })
   console.log("//ERROR:", req.method, req.url, err.message)
 });
-// app.use(express.static(path.join(__dirname, "client/build")))
+
 app.listen(process.env.PORT || 3100, () => {
   console.log('better-chat: listening to 3100');
 })
