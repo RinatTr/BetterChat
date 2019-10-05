@@ -16,3 +16,8 @@ To start the client, inside the client directory:
 1. Do `$ npm install`
 2. Run `$ npm start`
 
+To run tests inside client directory:
+
+1. Run `$ npm test`
+2. Press `a` to run all test
+
