@@ -37,10 +37,9 @@ class Main extends Component {
     async handleSubmit(e) {
         e.preventDefault();
         let { prompt } = this.state;
-       
         //if no username, set username. else, post message
+        client.send(prompt)
         if (!this.state.username) {
-            client.send(prompt)
             let username = prompt;
             if (Util.isNotLongUsername(username)) {
                 Util.updateUser(this, username);
@@ -48,7 +47,6 @@ class Main extends Component {
                 this.setState({invalid_user: true})
             }            
         } else {
-            client.send(prompt)
             let msg = { body: prompt,
                         user_id: this.state.user_id };
             Util.updateMessages(this, msg); 
