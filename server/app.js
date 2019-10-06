@@ -30,13 +30,13 @@ const sendMessage = (json) => {
   });
 }
 
-wsServer.on('request', function(request) {
+wsServer.on('request', (req) => {
   let userID = getUniqueID();
-  console.log('connection made', request.origin)
-  const connection = request.accept(null, request.origin);
+  console.log('connection made', req.origin)
+  const connection = req.accept(null, req.origin);
   clients[userID] = connection;
-  connection.on('message', function(message) {
-    sendMessage(message.utf8Data)
+  connection.on('message', (msg) => {
+    sendMessage(msg.utf8Data)
   })
 })
 
