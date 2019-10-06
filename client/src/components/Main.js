@@ -24,8 +24,6 @@ class Main extends Component {
         };
         client.onmessage = (message) => {
             setTimeout(function() { Util.updateMessages(this) }.bind(this), 1000)
-            //if username don't broadcast, if message, broadcast
-            // append to both msg and username emition a string at the beginning
             if (typeof message.data === 'string') {
                 console.log("Received: '" + message.data + "'");
             }
