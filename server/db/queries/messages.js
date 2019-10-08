@@ -1,7 +1,8 @@
 const { db } = require("./connect.js");
 
 const getAllMessages = (req, res, next) => {
-  db.any(`SELECT messages.created_at, messages.body, users.username
+  db.any(`SELECT messages.created_at, messages.body, users.username,         
+  users.created_at AS user_created_at
           FROM messages JOIN users ON messages.user_id = users.id
           ORDER BY messages.created_at DESC`)
     .then(data => {

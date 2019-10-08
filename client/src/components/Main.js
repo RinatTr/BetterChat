@@ -64,7 +64,8 @@ class Main extends Component {
                                 key={i}
                                 body={msg.body} 
                                 username={msg.username}
-                                timestamp={msg.created_at}
+                                msg_timestamp={msg.created_at}
+                                user_timestamp={msg.user_created_at}
                                 />
                             })}
                     </ul>

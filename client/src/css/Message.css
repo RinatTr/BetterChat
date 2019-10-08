@@ -41,3 +41,14 @@ div.msg-container {
 div.msg-container p {
     margin: 0px;
 }
+
+div.msg-container-show {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 15px;
+    color: #F6F6F6;
+    background-color: #291843;
+    border-radius: 10px;
+    font-size: calc(8px + 1vmin);
+}
