@@ -29,6 +29,7 @@ div.info-container {
 }
 
 div.msg-container {
+    position: relative;
     display: flex;
     justify-content: flex-start;
     text-align: left;
@@ -43,12 +44,18 @@ div.msg-container p {
 }
 
 div.msg-container-show {
+    position: absolute;
+    top: 0; 
+    left: 0;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 15px;
     color: #F6F6F6;
     background-color: #291843;
-    border-radius: 10px;
-    font-size: calc(8px + 1vmin);
+    border-radius: inherit;
+    font-size: inherit;
 }

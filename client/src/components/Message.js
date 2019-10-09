@@ -19,7 +19,6 @@ class Message extends Component {
     render() {
     let {body, username, msg_timestamp, user_timestamp} = this.props;
     let {show_timestamp} = this.state;
-    console.log(user_timestamp, typeof user_timestamp)
         let avatar_url = `https://i.pravatar.cc/50?u=${username}`
         return  (<li>
                     <div className="post-container">
@@ -31,10 +30,13 @@ class Message extends Component {
                                 <span>@{username}</span>
                                 <span><TimeAgo date={msg_timestamp}/></span>
                             </div>
-                            <div className={show_timestamp ? "msg-container-show" : "msg-container"}>
-                                {/* ternary to  change classname */}
-                                {/* ternary to change content */}
-                                <p> {show_timestamp ? user_timestamp : body}</p>
+                            <div className="msg-container">
+                                <p>{body}</p>
+                                {show_timestamp ? 
+                                <div className="msg-container-show">
+                                    <p>{user_timestamp}</p>
+                                </div>
+                                 : ""}
                             </div>
                         </div>       
                     </div>
