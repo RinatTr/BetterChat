@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TimeAgo from 'react-timeago';
 import '../css/Message.css';
+import { formatDate } from '../util/util';
 
 class Message extends Component {
     constructor(props) {
@@ -19,6 +20,7 @@ class Message extends Component {
     render() {
     let {body, username, msg_timestamp, user_timestamp} = this.props;
     let {show_timestamp} = this.state;
+    let d = new Date(user_timestamp);
         let avatar_url = `https://i.pravatar.cc/50?u=${username}`
         return  (<li>
                     <div className="post-container">
@@ -34,7 +36,7 @@ class Message extends Component {
                                 <p>{body}</p>
                                 {show_timestamp ? 
                                 <div className="msg-container-show">
-                                    <p>{user_timestamp}</p>
+                                    <p>{formatDate(user_timestamp)}</p>
                                 </div>
                                  : ""}
                             </div>

@@ -58,3 +58,8 @@ export const invalidCaseStr = (long, non_unique) => {
         return "username already exists";
     }
 }
+// Format Date
+export const formatDate = (ts) => {
+    let date = new Date(ts);
+    return `${date.toDateString()} ${date.toLocaleTimeString()}`;
+}
