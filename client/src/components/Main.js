@@ -23,7 +23,7 @@ class Main extends Component {
             console.log('WebSocket Client Connected');
         };
         client.onmessage = (message) => {
-            // setTimeout(function() { Util.updateMessages(this) }.bind(this), 1000)
+            setTimeout(function() { Util.updateMessages(this) }.bind(this), 1000)
             if (typeof message.data === 'string') {
                 console.log("Received: '" + message.data + "'");
             }
