@@ -1,5 +1,5 @@
 # BetterChat
-Simple Chat Implementation. Built using React, Websockets, NodeJS, express, PostgreSQL
+Welcome to BetterChar, a chat, but a better one. Built using React, Websockets, NodeJS, express, PostgreSQL.
 
 ![](./docs/screenshot_better.png)
 
