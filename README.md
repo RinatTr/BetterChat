@@ -1,7 +1,7 @@
 # BetterChat
 Simple Chat Implementation. Built using React, Websockets, NodeJS, express, PostgreSQL
 
-![](./docs/screenshot.png)
+![](./docs/screenshot_better.png)
 
 ## Features:
 * [x] Upon arriving to the page, a user is prompted to enter a new username.
