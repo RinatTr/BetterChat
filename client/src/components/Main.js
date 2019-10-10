@@ -25,6 +25,7 @@ class Main extends Component {
         client.onmessage = (msg) => {
             setTimeout(function() { Util.updateMessages(this) }.bind(this), 1000)
             if (typeof msg.data === 'string') {
+                //parse for future optimization
                 let parsed = JSON.parse(msg.data);
                 console.log("Received: '" + msg.data.prompt + "'");
             }
