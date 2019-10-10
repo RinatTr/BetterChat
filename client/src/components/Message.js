@@ -20,7 +20,6 @@ class Message extends Component {
     render() {
     let {body, username, msg_timestamp, user_timestamp} = this.props;
     let {show_timestamp} = this.state;
-    let d = new Date(user_timestamp);
         let avatar_url = `https://i.pravatar.cc/50?u=${username}`
         return  (<li>
                     <div className="post-container">

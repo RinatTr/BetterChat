@@ -22,10 +22,11 @@ class Main extends Component {
         client.onopen = () => {
             console.log('WebSocket Client Connected');
         };
-        client.onmessage = (message) => {
+        client.onmessage = (msg) => {
             setTimeout(function() { Util.updateMessages(this) }.bind(this), 1000)
-            if (typeof message.data === 'string') {
-                console.log("Received: '" + message.data + "'");
+            if (typeof msg.data === 'string') {
+                let parsed = JSON.parse(msg.data);
+                console.log("Received: '" + msg.data.prompt + "'");
             }
         };
         Util.updateMessages(this);  
