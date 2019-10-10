@@ -23,7 +23,7 @@ class Main extends Component {
             console.log('WebSocket Client Connected');
         };
         client.onmessage = (message) => {
-            setTimeout(function() { Util.updateMessages(this) }.bind(this), 1000)
+            // setTimeout(function() { Util.updateMessages(this) }.bind(this), 1000)
             if (typeof message.data === 'string') {
                 console.log("Received: '" + message.data + "'");
             }
@@ -36,9 +36,8 @@ class Main extends Component {
     }
     async handleSubmit(e) {
         e.preventDefault();
-        let { prompt } = this.state;
+        let { prompt, username, user_id } = this.state;
         //if no username, set username. else, post message
-        client.send(prompt)
         if (!this.state.username) {
             let username = prompt;
             if (Util.isNotLongUsername(username)) {
@@ -48,7 +47,9 @@ class Main extends Component {
             }            
         } else {
             let msg = { body: prompt,
-                        user_id: this.state.user_id };
+                user_id };
+                console.log({prompt, username})
+            client.send(JSON.stringify({prompt, username}));
             Util.updateMessages(this, msg); 
         }
     }

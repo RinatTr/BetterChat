@@ -36,7 +36,8 @@ wsServer.on('request', (req) => {
   const connection = req.accept(null, req.origin);
   clients[userID] = connection;
   connection.on('message', (msg) => {
-    sendMessage(msg.utf8Data)
+    let parsed = JSON.parse(msg.utf8Data)
+    sendMessage(msg)
   })
 })
 

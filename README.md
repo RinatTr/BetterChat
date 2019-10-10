@@ -1,7 +1,17 @@
 # BetterChat
-Simple Chat Implementation.
+Simple Chat Implementation. Built using React, Websockets, NodeJS, express, PostgreSQL
 
-To start and seed the database (PostgreSQL), 
+![](./docs/screenshot.png)
+
+## Features:
+* [x] Upon arriving to the page, a user is prompted to enter a new username.
+* [x] The timeline supports new posts by the current logged in users in real-time using Websockets.
+* [x] User messages are persisted across multiple page refreshes using an implemented RESTful API and PostgreSQL.
+* [x] Every post has a TimeAgo stamp as well as a user's avatar. A click on a message reveals the time and date it was created at.
+* [x] Responsive interface effectively scales with the viewport size and supports Mobile UI.
+* [x] Error handling used to implement username validation logic.
+
+To start and seed the database, 
 
 1. Install and run PostgreSQL
 2. Inside `/server/db/` Run `$ psql -f seed.db`
